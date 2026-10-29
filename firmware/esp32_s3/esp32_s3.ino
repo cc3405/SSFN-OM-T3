@@ -78,17 +78,17 @@ float readDistanceCm(uint8_t trigPin, uint8_t echoPin) {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   const uint32_t duration = pulseIn(echoPin, HIGH, SONAR_TIMEOUT_US);
-  if (duration == 0) return -1.0f; // No echo; caller treats as unknown, not a guaranteed clear path.
+  if (duration == 0) return -1.0f;
   return duration * 0.0343f / 2.0f;
 }
 
 bool obstacleDetected() {
   const float leftCm = readDistanceCm(Pins::SONAR_LEFT_TRIG, Pins::SONAR_LEFT_ECHO);
   const float rightCm = readDistanceCm(Pins::SONAR_RIGHT_TRIG, Pins::SONAR_RIGHT_ECHO);
-  // Fail-safe: a valid near reading stops motion. Missing echoes are logged as unknown;
-  // sonar is only a near-field aid and must not be the only safety mechanism.
-  return (leftCm > 0 && leftCm < OBSTACLE_STOP_CM) ||
-         (rightCm > 0 && rightCm < OBSTACLE_STOP_CM);
+  // Fail safe: unknown/no-echo readings block motion until both sensors are verified.
+  // Ultrasonic sensing is only a near-field aid, never the only safety mechanism.
+  if (leftCm <= 0 || rightCm <= 0) return true;
+  return leftCm < OBSTACLE_STOP_CM || rightCm < OBSTACLE_STOP_CM;
 }
 
 void startMotion(int16_t leftPwm, int16_t rightPwm) {
@@ -99,7 +99,7 @@ void startMotion(int16_t leftPwm, int16_t rightPwm) {
   }
   if (obstacleDetected()) {
     stopMotors();
-    Serial.println("BLOCKED: obstacle detected within stop threshold.");
+    Serial.println("BLOCKED: obstacle/unknown sonar reading. Check both sensors.");
     return;
   }
   setMotorSide(Pins::LEFT_RPWM, Pins::LEFT_LPWM, leftPwm);
@@ -154,7 +154,6 @@ void handleCommand(String command) {
 }
 
 void setup() {
-  // Configure PWM outputs to a known OFF state before enabling other peripherals.
   const uint8_t outputs[] = {
     Pins::LEFT_RPWM, Pins::LEFT_LPWM, Pins::RIGHT_RPWM, Pins::RIGHT_LPWM,
     Pins::SONAR_LEFT_TRIG, Pins::SONAR_RIGHT_TRIG
@@ -214,7 +213,7 @@ void loop() {
       Serial.println("Motion pulse complete; motors stopped.");
     } else if (obstacleDetected()) {
       stopMotors();
-      Serial.println("STOP: obstacle detected.");
+      Serial.println("STOP: obstacle or unknown sonar reading.");
     }
   }
 }
