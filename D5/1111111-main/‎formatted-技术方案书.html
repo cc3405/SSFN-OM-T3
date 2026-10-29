@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="docx-page-size" content="A4">
+<title>航天未来科技组《OMER 的购物服务》技术方案书</title>
+<style>
+/* 页面规则：正文页脚居中页码；封面命名页无页眉页脚 */
+@page { @bottom-center { content: "第 " counter(page) " 页"; } }
+@page cover { @bottom-center { content: none; } }
+section[role="cover"] { page: cover; }
+
+:root {
+  --fs-h1: 18pt; --fs-h2: 14pt; --fs-h3: 12.5pt;
+  --fs-body: 12pt; --fs-small: 10pt;
+  --ff-heading: "微软雅黑", "Microsoft YaHei", sans-serif;
+  --ff-body: "宋体", "SimSun", serif;
+  --lh-body: 1.65;
+  --color-primary: #1a4f8b;
+  --color-text: #1c1c1c;
+  --color-muted: #5f6b7a;
+  --color-border: #c9d3de;
+  --color-highlight: #eef3f9;
+  --spacing-paragraph: 0.7em;
+  --spacing-section: 1.6em;
+  --spacing-block: 0.9em;
+  --margin-page: 2.4cm;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "宋体", "SimSun", serif; font-size: 12pt; line-height: 1.65; color: #1c1c1c; background: #ffffff; }
+
+/* 封面 */
+.report-cover { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: 62vh; padding: var(--margin-page); background: var(--color-highlight); }
+.cover-band { width: 64px; height: 8px; background: var(--color-primary); margin-bottom: 1.6em; }
+.cover-category { font-size: 13pt; font-family: var(--ff-heading); font-weight: 700; color: var(--color-primary); letter-spacing: .12em; margin-bottom: 1em; }
+.cover-title { font-size: 30pt; font-family: var(--ff-heading); font-weight: 700; color: var(--color-primary); line-height: 1.35; margin-bottom: .5em; }
+.cover-subtitle { font-size: 15pt; font-family: var(--ff-heading); color: #3d5a80; margin-bottom: 1.2em; }
+.cover-meta { font-size: 10.5pt; color: var(--color-muted); line-height: 1.9; }
+
+/* 目录 */
+.doc-toc { padding: var(--spacing-section) var(--margin-page); }
+.toc-title { font-weight: 700; font-size: 16pt; font-family: var(--ff-heading); margin-bottom: .8em; }
+.toc-list, .toc-list ol, .toc-list ul { list-style: none; list-style-type: none; padding-left: 1.4em; }
+.toc-list > li { margin-bottom: .45em; font-family: var(--ff-heading); font-size: 12pt; }
+.toc-list ol li { margin-bottom: .3em; font-family: "宋体", "SimSun", serif; font-size: 11pt; }
+.toc-list a { color: #1c1c1c; text-decoration: none; }
+
+/* 正文 */
+.report-body { padding: 0 var(--margin-page) var(--spacing-section); }
+h1 { font-size: var(--fs-h1); font-family: var(--ff-heading); font-weight: 700; color: #ffffff; background: var(--color-primary); padding: .45em .7em; margin-top: var(--spacing-section); margin-bottom: var(--spacing-block); page-break-after: avoid; }
+h2 { font-size: var(--fs-h2); font-family: var(--ff-heading); font-weight: 700; color: var(--color-primary); border-left: 5px solid var(--color-primary); padding-left: .55em; margin-top: var(--spacing-block); margin-bottom: var(--spacing-paragraph); page-break-after: avoid; }
+h3 { font-size: var(--fs-h3); font-family: var(--ff-heading); font-weight: 700; color: #33506e; margin-top: var(--spacing-block); margin-bottom: var(--spacing-paragraph); page-break-after: avoid; }
+p { margin-bottom: var(--spacing-paragraph); text-indent: 2em; text-align: justify; }
+p.noindent { text-indent: 0; }
+strong { font-weight: 700; }
+
+/* 表格 */
+table { border-collapse: collapse; width: 100%; margin: 0.6em 0 1em; font-size: 10.5pt; }
+th, td { border: 1px solid var(--color-border); padding: .38em .55em; text-align: left; vertical-align: top; }
+th { background: var(--color-highlight); font-family: var(--ff-heading); font-weight: 700; color: #24425f; }
+tr:nth-child(even) td { background: #f7fafd; }
+td.r, th.r { text-align: right; }
+
+/* 图 */
+figure { margin: 1em 0 1.2em; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; border: 1px solid var(--color-border); }
+figcaption { font-size: 10pt; color: var(--color-muted); margin-top: .4em; text-indent: 0; }
+
+/* 摘要卡 */
+.summary-card { border-left: 4px solid var(--color-primary); background: var(--color-highlight); padding: .9em 1.1em; margin: var(--spacing-block) 0; border-radius: 0 6px 6px 0; }
+.summary-card p { text-indent: 0; margin-bottom: .3em; }
+.note { background: #fdf6e9; border-left: 4px solid #d9a441; padding: .6em .9em; margin: .8em 0; border-radius: 0 6px 6px 0; }
+.note p { text-indent: 0; margin-bottom: 0; font-size: 10.5pt; }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<section role="cover" class="report-cover">
+  <div class="cover-band"></div>
+  <p class="cover-category">头脑奥林匹克 2026—2027 年度长期题 1</p>
+  <p class="cover-title">OMER 的购物服务<br>技术方案书</p>
+  <p class="cover-subtitle">太空补给站购物服务 · AstroMart Express</p>
+  <div class="cover-meta">
+    <p>参赛队伍：航天未来科技组（7 人）</p>
+    <p>核心装备：星驰一号车辆 · 回巢号购物车 · 星臂卸货装置</p>
+    <p>预算控制：160 美元 / 上限 165 美元　　版本：V1.0</p>
+  </div>
+</section>
+
+<!-- 目录 -->
+<section role="cover">
+<nav class="doc-toc" aria-label="文档目录">
+  <p class="toc-title">目录</p>
+  <ol class="toc-list">
+    <li><a href="#s1">一、题目解读与总体策略</a></li>
+    <li><a href="#s2">二、队伍组织：组名、人员与分工</a></li>
+    <li><a href="#s3">三、剧情内容：太空补给站购物服务</a></li>
+    <li><a href="#s4">四、场地分析与行驶路线</a></li>
+    <li><a href="#s5">五、车辆"星驰一号"设计</a></li>
+    <li><a href="#s6">六、购物车"回巢号"设计</a></li>
+    <li><a href="#s7">七、卸货装置"星臂"设计</a></li>
+    <li><a href="#s8">八、购物清单与商品道具</a></li>
+    <li><a href="#s9">九、风格设计：五元素 50 分</a></li>
+    <li><a href="#s10">十、材料准备与制作计划</a></li>
+    <li><a href="#s11">十一、成本表</a></li>
+    <li><a href="#s12">十二、比赛过程：8 分钟流程</a></li>
+    <li><a href="#s13">十三、配音脚本</a></li>
+    <li><a href="#s14">十四、细节、红线与风险预案</a></li>
+    <li><a href="#s15">十五、提交材料清单</a></li>
+  </ol>
+</nav>
+</section>
+
+<!-- 正文 -->
+<section role="body" class="report-body" data-page-restart="1">
+
+<div class="summary-card">
+<p><strong>执行摘要</strong></p>
+<p>本方案面向 OM 长期题《OMER 的购物服务》的一场 8 分钟表演，以"太空补给站购物服务"为世界观，构建车辆（星驰一号）、购物车（回巢号）、卸货装置（星臂）三件自研装备与 7 人分工体系。技术路线为差速驱动 + 编码器里程计 + 陀螺仪航向融合的航点自动巡航；购物车采用单向离合回位机构；卸货装置为三工位电动回转臂。全部物料合计 160 美元，预留 5 美元余量；配套四套 Arduino 控制程序与 6 周制作排期。</p>
+</div>
+
+<h1 id="s1">一、题目解读与总体策略</h1>
+<h2>1.1 赛制要点</h2>
+<p>本题只有一场 8 分钟的完整表演，没有现场抽题。全部得分来自赛前可以充分准备的两块：中心挑战（200 分）与风格（50 分），同时受成本上限 165 美元与行为红线的硬约束。总策略一句话：<strong>把技术任务做成"稳得满分的流程"，把 8 分钟做成"一台好看的秀"，把预算和规则当成"不可逾越的边框"。</strong></p>
+<h2>1.2 得分结构与攻关重点</h2>
+<table>
+<tr><th>得分项</th><th class="r">分值</th><th>我们的攻关设计</th></tr>
+<tr><td>D1 表演整体创造性</td><td class="r">20</td><td>太空补给站世界观贯穿全场，任务动作即剧情</td></tr>
+<tr><td>D2 表演整体质量</td><td class="r">15</td><td>全流程彩排 20 轮以上，动作与配音零冷场</td></tr>
+<tr><td>D3a 车辆推进系统创造性</td><td class="r">25</td><td>差速驱动 + 编码器里程计 + 陀螺仪航向融合的"自动巡航购物车"</td></tr>
+<tr><td>D3b 车辆功能工程</td><td class="r">25</td><td>航点状态机自动执行 15 个航点，双模遥控随时接管</td></tr>
+<tr><td>D3c 完成购物和结账</td><td class="r">10</td><td>全流程走完：接单、取货、结账、送回一气呵成</td></tr>
+<tr><td>D4a 车辆购买全部 3 件物品</td><td class="r">10</td><td>车载取货铲逐件拾取，入篮可数</td></tr>
+<tr><td>D4b 选择一件替代品</td><td class="r">5</td><td>牛奶缺货 → 星尘豆奶，剧情中明示</td></tr>
+<tr><td>D4c 购物清单呈现创造性</td><td class="r">10</td><td>实体清单卡 + 车载 OLED 同屏点亮的"双通道清单"</td></tr>
+<tr><td>D5a 助理呈现购物清单</td><td class="r">5</td><td>助理在车辆越线前亲手递交清单（官方澄清要求）</td></tr>
+<tr><td>D5b 助理检查订单准确性</td><td class="r">5</td><td>结账时逐件唱名核对</td></tr>
+<tr><td>D5c 助理批准替代品</td><td class="r">5</td><td>缺货现场口头批准 + 亮出"替代许可"牌</td></tr>
+<tr><td>D5d 助理表演效果</td><td class="r">15</td><td>助理为全场戏眼，台词、服装、互动最重</td></tr>
+<tr><td>D6a 卸货装置卸下 3 件物品</td><td class="r">12</td><td>星臂三工位回转卸料，三件全进结账区</td></tr>
+<tr><td>D6b 卸货方式创造性</td><td class="r">13</td><td>电动回转臂 + 舵机翻料，人力仅按按钮</td></tr>
+<tr><td>D7a 购物车停入购物车区域</td><td class="r">10</td><td>脱钩检测 → 单向离合 → 定距驱动 1.8 米入区</td></tr>
+<tr><td>D7b 购物车回位设计创造性</td><td class="r">15</td><td>拖行自由滚、释放自动走的"回巢"机构</td></tr>
+<tr><td>F 风格五元素</td><td class="r">50</td><td>见第九章专项设计</td></tr>
+<tr><td><strong>合计</strong></td><td class="r"><strong>250</strong></td><td></td></tr>
+</table>
+<h2>1.3 规则红线（每一条都对应一条设计决策）</h2>
+<p>车辆必须原创、自成一体，不能外接电源线，不能用斜坡或外部风扇推进；乘坐车辆的队员行进时脚不能接触地面；卸货装置不能连接在车辆上，队员可直接用人力操作（人力参与度会摊薄 D6b 得分）；购物车计时开始时必须有至少一个接地点位于购物车区域内，表演中以任意方式连接到车辆、随车行进并由车辆推进，释放后自行行进至购物车区域，静止时至少一个接地点在区域内；购物清单必须在车辆越过起始线之前交给车辆操作员（官方 2026-10-01 澄清）；结账完成后车辆继续行进，直到连接的购物车穿过起始线所在的垂直平面，释放购物车；总成本不超过 165 美元。</p>
+
+<h1 id="s2">二、队伍组织：组名、人员与分工</h1>
+<h2>2.1 组名与代号体系</h2>
+<p>组名<strong>"航天未来科技组"</strong>，表演世界定为"太空补给站购物服务（AstroMart Express）"。三名台前角色使用剧中代号，全部队员佩统一臂章，形成贯穿全场的队伍视觉系统。</p>
+<h2>2.2 人员与分工（7 人）</h2>
+<table>
+<tr><th>代号</th><th>岗位</th><th>职责任务</th><th>关键产出</th></tr>
+<tr><td>队员 A（星舰长）</td><td>队长 / 车辆操作员</td><td>乘坐"星驰一号"驾驶；赛前总检；场上应急决策</td><td>驾驶操作、检查清单</td></tr>
+<tr><td>队员 B（小织）</td><td>购物助理</td><td>剧中唯一"服务方"角色：递交清单、批准替代品、结账核对订单</td><td>台词最重的表演线</td></tr>
+<tr><td>队员 C（星臂手）</td><td>卸货装置操作员</td><td>操作"星臂"三工位卸料；管理结账台道具</td><td>三件商品入区</td></tr>
+<tr><td>队员 D（结构师）</td><td>机械工程师</td><td>车辆底盘、购物车、星臂的选材、加工、装配</td><td>全部机械结构</td></tr>
+<tr><td>队员 E（电控师）</td><td>电气工程师</td><td>电路搭建、四套程序烧录调试、里程计标定</td><td>电子与程序</td></tr>
+<tr><td>队员 F（星美师）</td><td>服装道具美术</td><td>服装、商品道具、艺术包装、场地视觉</td><td>风格分主责</td></tr>
+<tr><td>队员 G（声场师）</td><td>音乐配音 / 计时员</td><td>原创音乐、蓝牙音箱放音、配音表演、场上计时</td><td>时间轴执行</td></tr>
+</table>
+<div class="note"><p>表中 A—G 为岗位代号，正式名单确定后由教练组填入姓名；每岗另设一名交叉备份（A?E、B?F、C?D、G?A），保证任一人缺席都能完整演出。</p></div>
+
+<h1 id="s3">三、剧情内容：太空补给站购物服务</h1>
+<h2>3.1 剧情梗概</h2>
+<p>近未来，月球基地"太空补给站"开业。地面指挥中心发来第一份补给订单，购物助理小织把发光的"星际购物清单"交给星舰长；星驰一号拖着回巢号购物车出发，自动挂钩、进场采购。货架上的月球牛奶突然"缺货"，小织现场批准用"星尘豆奶"替代。购物完成后车辆驶向结账区，星臂装置将三件货品逐一搬上结账台，小织逐件唱名核对。结账完成，车辆拖着购物车继续前进、越过起始线平面，掉头释放，购物车自己滑行回到停车区归位。星驰一号回到出发位，全体队员歌舞谢幕。</p>
+<h2>3.2 三件购物清单与替代关系</h2>
+<table>
+<tr><th>序号</th><th>清单物品</th><th>状态</th><th>实际采购</th><th>备注</th></tr>
+<tr><td>1</td><td>月球牛奶</td><td>缺货</td><td>星尘豆奶（替代品）</td><td>助理现场批准；艺术级包装（F1）</td></tr>
+<tr><td>2</td><td>全麦面包</td><td>在售</td><td>全麦面包</td><td>常规道具</td></tr>
+<tr><td>3</td><td>彩蛋六连盒</td><td>在售</td><td>彩蛋六连盒</td><td>常规道具</td></tr>
+</table>
+
+<h1 id="s4">四、场地分析与行驶路线</h1>
+<h2>4.1 场地几何（依据图 A 与官方澄清）</h2>
+<p>场地 24 英尺 × 20 英尺（约 7.3 米 × 6.1 米）；起始线宽 8 英尺，位于结账区与购物车区域正中间上方，距两区顶部 6 英尺；购物区域为起始线以下、除结账区与购物车区域外的全部空间；结账区 5 英尺 × 4 英尺位于左侧，购物车区域 5 英尺 × 4 英尺位于右侧，两区间隔 10 英尺；观众坐席推荐位于场地底边一侧。以下布局图与路线图即按此几何绘制。</p>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig1_field.png" alt="场地布局与行驶路线"><figcaption>图 1　场地布局与行驶路线（单位：英尺，不按比例）</figcaption></figure>
+<h2>4.2 行驶路线（P0—P7 共 15 个航点）</h2>
+<table>
+<tr><th>阶段</th><th>航点</th><th>内容</th><th>规则对应</th></tr>
+<tr><td>P0 出发</td><td>起点</td><td>车辆位于起始线后，购物车停在购物车区域内</td><td>计时开始状态</td></tr>
+<tr><td>P0 接单</td><td>起点</td><td>助理递交购物清单，OLED 同步点亮</td><td>清单须在越线前交给操作员</td></tr>
+<tr><td>P1 挂钩</td><td>购物车区域</td><td>车辆自动接近，磁性锥窝 + 弹簧锁爪自动挂钩</td><td>表演中连接购物车</td></tr>
+<tr><td>P2 取货</td><td>购物区域货架</td><td>取货铲逐件拾取 3 件，含替代品确认</td><td>进入购物区域购买三件</td></tr>
+<tr><td>P3 结账</td><td>结账区停靠</td><td>星臂卸货 3 件，助理逐件核对</td><td>前往结账区域并卸载</td></tr>
+<tr><td>P4 穿越</td><td>右侧纵行</td><td>结账后继续前进，向上穿过起始线平面</td><td>购物车须穿过该垂直平面</td></tr>
+<tr><td>P5 释放</td><td>购物车区域正上方</td><td>掉头向下再穿线，购物车过线瞬间释放</td><td>过线时释放</td></tr>
+<tr><td>P6 回位</td><td>购物车区域</td><td>购物车自行驱动 1.8 米停入区域</td><td>静止时至少一个接地点在区内</td></tr>
+<tr><td>P7 归位</td><td>起始线后</td><td>车辆空载返回出发位停稳</td><td>车辆保持在起始线上或之外</td></tr>
+</table>
+<h2>4.3 释放点的几何论证</h2>
+<p>释放点选在购物车区域正上方（释放线与区域顶边距离约 6 英尺）。因为购物车跟在车辆后方，向上穿线时购物车"朝上"过线，掉头向下时购物车"朝下"过线——选择后者释放，购物车保持与行进方向一致，只需直行约 1.8 米即可进入区域，无需转向机构，回位成功率最高。规则允许时间内的多次尝试，本方案还保留了"重挂钩再释放"的补试路径。</p>
+
+<h1 id="s5">五、车辆"星驰一号"设计</h1>
+<h2>5.1 总体参数</h2>
+<p>车长约 900 毫米（含取货铲与拖钩）、宽 600 毫米、总高约 700 毫米，可通过标准门洞。双电机差速驱动：左右各 1 个 12V 直流减速电机（带编码器）配 80 毫米橡胶轮，前后各 1 个万向轮，<strong>原地转向半径为零</strong>，适合 24 英尺 × 20 英尺的紧凑场地。乘员 1 名操作员坐姿驾驶，双脚置于脚踏板，行进中脚不触地。电源为 2S 18650 锂电池组（7.4V），自带电池、自成一体，不外接任何电源线。任务航速 0.45 米/秒，最高 0.60 米/秒。</p>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig2_vehicle.png" alt="车辆总布置"><figcaption>图 2　"星驰一号"车辆总布置（俯视 + 侧视，单位：毫米）</figcaption></figure>
+<h2>5.2 控制系统</h2>
+<p>主控 Arduino Nano，TB6612FNG 双路 H 桥驱动电机；编码器脉冲积分做里程计，MPU6050 陀螺仪做航向融合（互补滤波），构成位姿闭环。航点状态机自动执行 15 个航点；nRF24L01 无线手柄 100 毫秒心跳，300 毫秒失联自动停车；任何时刻可切手动模式人工接管。车载 SSD1306 OLED 显示购物清单与任务状态，与实体清单卡构成"双通道清单"。车尾拖钩由舵机控制锁爪，可在航点自动触发或手柄 B 键人工释放。电气架构见下图，四套控制程序源码见随附《程序代码》目录。</p>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig3_elec.png" alt="电气控制框图"><figcaption>图 3　车辆电气与控制系统框图</figcaption></figure>
+<h2>5.3 取货铲</h2>
+<p>前置翻转铲由 MG90S 舵机驱动：铲平推入货架托位 → 上翻 95° 把商品翻入车载料斗 → 复位，单件循环约 1.5 秒。到结账区后料斗倾倒，商品进入购物车，再由星臂搬上结账台。</p>
+
+<h1 id="s6">六、购物车"回巢号"设计</h1>
+<h2>6.1 结构</h2>
+<p>PVC 管骨架 + 帆布货篮，四轮布局：两后固定轮 + 一前万向轮 + 一前驱动轮。车尾拖杆末端为 T 型钩头，与车辆磁性锥窝锁爪配合实现自动挂钩。</p>
+<h2>6.2 回位机构（D7 主攻）</h2>
+<p>拖行阶段单向轴承处于超越状态，车轮自由滚动、电机断电，购物车完全由车辆推进，满足"随车辆行进并由车辆推进"。拖钩脱开的瞬间，锁爪释放微动开关触发回程模块：单向轴承结合，12V 减速电机驱动前轮，霍尔编码器测距，行走 1.8 米（可编程 1.2—2.2 米）后断电，毛毡阻尼垫 + 海绵保险杠使其停在购物车区域内。断电计时作为霍尔失效时的兜底停止条件。</p>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig4_cart.png" alt="购物车机构"><figcaption>图 4　"回巢号"购物车：连接、释放与自行回位机构</figcaption></figure>
+<h2>6.3 合规性说明</h2>
+<p>题目只对车辆规定"自成一体、不插电"，对购物车并无同类限制，且明确允许购物车包含商业生产的零件；拖行阶段由车辆推进、释放后"自行行进"，与规则条文一致。建议赛前通过官方澄清渠道（截止 2027-02-15）确认，并将澄清答复打印随队携带；若裁判另有解读，则切换备选的纯机械发条回位方案。</p>
+
+<h1 id="s7">七、卸货装置"星臂"设计</h1>
+<h2>7.1 结构与动作</h2>
+<p>独立三脚星形底座（不与车辆连接），立柱顶部为蜗轮蜗杆减速电机驱动的回转臂，臂端为舵机驱动的 V 型弹性夹托盘。俯视三个工位按 120° 分布：取料位（购物车侧）→ 过渡位 → 放料位（结账台）。单循环动作：托盘夹取一件 → 回转 120° → 翻料落入结账台 → 复位；三件商品按三次按钮完成。</p>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig5_unload.png" alt="星臂卸货装置"><figcaption>图 5　"星臂"卸货装置：三工位回转卸料（独立于车辆）</figcaption></figure>
+<h2>7.2 设计要点</h2>
+<p>蜗轮蜗杆自锁，断电即停，安全且无需刹车；队员只按按钮，不施人力搬运，对应 D6b"人力参与度"的加分导向；结账台为自带轻质折叠小桌（垫高 300 毫米，落于结账区域内），属于队携道具。</p>
+
+<h1 id="s8">八、购物清单与商品道具</h1>
+<h2>8.1 购物清单双通道呈现（D4c 主攻）</h2>
+<p>实体通道：A5 尺寸"星际购物清单卡"，UV 印刷 + 荧光油墨，助理递交时以交接灯点亮，观众与裁判清晰可见。电子通道：车辆 OLED 同步显示清单与完成状态，每买到一件划掉一项。递交发生在车辆越过起始线之前，动作设计为"助理把清单卡插入驾驶位卡槽"，确保时序无争议。</p>
+<h2>8.2 商品道具</h2>
+<p>三件商品均用回收包装改制，轻质防摔。其中"星尘豆奶"为艺术级道具（F1 主攻）：手工烫金星图 + UV 贴纸 + 手绘渐变，配合剧情作为替代品被高光展示。</p>
+
+<h1 id="s9">九、风格设计：五元素 50 分</h1>
+<table>
+<tr><th>元素</th><th>内容</th><th>得分点</th></tr>
+<tr><td>F1 购物清单中一件物品的艺术质量（10）</td><td>"星尘豆奶"艺术级包装：烫金星图、UV 星云贴、手绘渐变</td><td>一件物品的视觉完成度</td></tr>
+<tr><td>F2 表演中音乐的创造性使用（10）</td><td>原创主题曲《出发吧星驰号》；音乐与任务动作同步设计：挂钩成功一声"咔哒"上扬音、卸货每件一记打击乐、购物车回位归巢铃声</td><td>音乐服务于剧情动作而非背景</td></tr>
+<tr><td>F3 参赛队自由选择一（10）</td><td>队伍视觉系统：队徽、臂章、场地导视贴纸统一"星图"设计语言</td><td>自选项目申报为"导视系统设计"</td></tr>
+<tr><td>F4 参赛队自由选择二（10）</td><td>"星际购物清单"双通道呈现装置（实体发光清单卡 + 车载 OLED 同步屏）</td><td>自选项目申报为"清单呈现装置"</td></tr>
+<tr><td>F5 四项元素整体效果（10）</td><td>全场灯光、音乐、服装、道具在 8 分钟内形成统一太空补给站氛围</td><td>整体协调</td></tr>
+</table>
+
+<h1 id="s10">十、材料准备与制作计划</h1>
+<h2>10.1 制作排期（赛前 6 周）</h2>
+<table>
+<tr><th>周次</th><th>里程碑</th><th>责任岗</th></tr>
+<tr><td>第 1 周</td><td>采购到货；车辆底盘下料装配；程序框架</td><td>D、E</td></tr>
+<tr><td>第 2 周</td><td>车辆行走调试、里程计标定；购物车骨架</td><td>D、E</td></tr>
+<tr><td>第 3 周</td><td>取货铲与拖钩机构；星臂装配；全链路联调</td><td>D、E、C</td></tr>
+<tr><td>第 4 周</td><td>回位机构调校（距离、阻尼）；OLED 清单系统</td><td>E、D</td></tr>
+<tr><td>第 5 周</td><td>服装道具完成；配音录音；全流程彩排 10 轮</td><td>F、G、全员</td></tr>
+<tr><td>第 6 周</td><td>1:1 胶带场地全流程彩排 10 轮以上；提交材料核对</td><td>全员</td></tr>
+</table>
+<h2>10.2 赛日器材箱清单</h2>
+<p>车辆（含备用电池与保险丝）、购物车、星臂、结账台、货架道具、商品道具与替代品、清单卡、服装 7 套、蓝牙音箱、工具箱（内六角、电烙铁、备用电机与舵机、扎带胶带）、四份风格表、四份成本表、澄清打印件、清洁工具。</p>
+
+<h1 id="s11">十一、成本表（上限 165 美元，合计 160 美元，余量 5 美元）</h1>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig7_cost.png" alt="成本构成"><figcaption>图 6　总成本构成</figcaption></figure>
+<table>
+<tr><th>序</th><th>类别</th><th>物品</th><th class="r">数量</th><th class="r">单价/＄</th><th class="r">小计/＄</th></tr>
+<tr><td>1</td><td>车辆</td><td>桦木多层板 9mm 900×600</td><td class="r">2</td><td class="r">4.0</td><td class="r">8</td></tr>
+<tr><td>2</td><td>车辆</td><td>橡胶驱动轮 80mm</td><td class="r">2</td><td class="r">3.0</td><td class="r">6</td></tr>
+<tr><td>3</td><td>车辆</td><td>重载万向轮</td><td class="r">2</td><td class="r">2.0</td><td class="r">4</td></tr>
+<tr><td>4</td><td>车辆</td><td>轴承/螺栓/角码/扎带/毛毡</td><td class="r">1 批</td><td class="r">6.0</td><td class="r">6</td></tr>
+<tr><td>5</td><td>车辆</td><td>座垫/帆布/脚踏胶垫</td><td class="r">1 批</td><td class="r">5.0</td><td class="r">5</td></tr>
+<tr><td>6</td><td>车辆</td><td>车身涂装（漆+反光贴+队徽打印）</td><td class="r">1 批</td><td class="r">4.0</td><td class="r">4</td></tr>
+<tr><td>7</td><td>电控</td><td>12V 减速电机（带编码器）</td><td class="r">2</td><td class="r">8.5</td><td class="r">17</td></tr>
+<tr><td>8</td><td>电控</td><td>TB6612FNG 双路 H 桥</td><td class="r">1</td><td class="r">4.0</td><td class="r">4</td></tr>
+<tr><td>9</td><td>电控</td><td>Arduino Nano 兼容板</td><td class="r">3</td><td class="r">3.0</td><td class="r">9</td></tr>
+<tr><td>10</td><td>电控</td><td>nRF24L01 模块+天线</td><td class="r">2</td><td class="r">2.5</td><td class="r">5</td></tr>
+<tr><td>11</td><td>电控</td><td>MPU6050 陀螺仪模块</td><td class="r">1</td><td class="r">3.0</td><td class="r">3</td></tr>
+<tr><td>12</td><td>电控</td><td>SSD1306 OLED 0.96″</td><td class="r">1</td><td class="r">4.0</td><td class="r">4</td></tr>
+<tr><td>13</td><td>电控</td><td>MG90S 金属舵机</td><td class="r">3</td><td class="r">1.7</td><td class="r">5</td></tr>
+<tr><td>14</td><td>电控</td><td>遥控盒（摇杆+4 按钮+外壳）</td><td class="r">1</td><td class="r">3.0</td><td class="r">3</td></tr>
+<tr><td>15</td><td>电源</td><td>2S 18650 电池组+保护板</td><td class="r">1</td><td class="r">9.0</td><td class="r">9</td></tr>
+<tr><td>16</td><td>电源</td><td>18650 备用电芯</td><td class="r">2</td><td class="r">2.0</td><td class="r">4</td></tr>
+<tr><td>17</td><td>电源</td><td>双槽锂电池充电器</td><td class="r">1</td><td class="r">4.0</td><td class="r">4</td></tr>
+<tr><td>18</td><td>电源</td><td>8×AA 电池盒</td><td class="r">2</td><td class="r">1.0</td><td class="r">2</td></tr>
+<tr><td>19</td><td>购物车</td><td>PVC 管材+管件+帆布</td><td class="r">1 批</td><td class="r">8.0</td><td class="r">8</td></tr>
+<tr><td>20</td><td>购物车</td><td>中载脚轮</td><td class="r">4</td><td class="r">1.5</td><td class="r">6</td></tr>
+<tr><td>21</td><td>购物车</td><td>12V 减速电机（回程驱动）</td><td class="r">1</td><td class="r">6.0</td><td class="r">6</td></tr>
+<tr><td>22</td><td>购物车</td><td>单向轴承（棘轮离合）</td><td class="r">2</td><td class="r">1.5</td><td class="r">3</td></tr>
+<tr><td>23</td><td>购物车</td><td>霍尔传感器+磁铁</td><td class="r">1</td><td class="r">2.0</td><td class="r">2</td></tr>
+<tr><td>24</td><td>星臂</td><td>12V 蜗轮蜗杆减速电机</td><td class="r">1</td><td class="r">7.0</td><td class="r">7</td></tr>
+<tr><td>25</td><td>星臂</td><td>铝管/木板+限位开关</td><td class="r">1 批</td><td class="r">5.0</td><td class="r">5</td></tr>
+<tr><td>26</td><td>道具</td><td>商品道具（回收包装改造）</td><td class="r">1 批</td><td class="r">3.0</td><td class="r">3</td></tr>
+<tr><td>27</td><td>道具</td><td>星尘豆奶艺术包装材料</td><td class="r">1 套</td><td class="r">4.0</td><td class="r">4</td></tr>
+<tr><td>28</td><td>道具</td><td>队伍服装（马甲/帽/臂章）×7</td><td class="r">1 批</td><td class="r">7.0</td><td class="r">7</td></tr>
+<tr><td>29</td><td>道具</td><td>蓝牙小音箱</td><td class="r">1</td><td class="r">3.0</td><td class="r">3</td></tr>
+<tr><td>30</td><td>道具</td><td>LED 灯带+电池盒</td><td class="r">1</td><td class="r">3.0</td><td class="r">3</td></tr>
+<tr><td>31</td><td>耗材</td><td>导线/热缩/胶带/接插件</td><td class="r">1 批</td><td class="r">1.0</td><td class="r">1</td></tr>
+<tr><td colspan="5"><strong>合计</strong></td><td class="r"><strong>160</strong></td></tr>
+</table>
+<p>分类小计：车辆机械 33、驱动电控 50、电源 19、购物车 25、星臂 12、道具风格 20、耗材 1。队服统一臂章等"不计入成本"的认定以活动手册附录为准，正式提交前逐项复核。</p>
+
+<h1 id="s12">十二、比赛过程：8 分钟流程</h1>
+<figure><img src="/root/.codebuddy/artifact/2f8a7d30-9c21-4f0b-1d5c-af8dd20f3000/assets/fig6_timeline.png" alt="比赛时间轴"><figcaption>图 7　8 分钟比赛过程时间轴（含 60 秒安全余量）</figcaption></figure>
+<h2>12.1 时间轴</h2>
+<table>
+<tr><th>时间</th><th>阶段</th><th>动作</th><th>责任人</th></tr>
+<tr><td>00:00—00:40</td><td>进场布置</td><td>摆货架、结账台、商品道具、车辆与购物车就位</td><td>D、C、A</td></tr>
+<tr><td>00:40—00:55</td><td>开场</td><td>音乐起，主题亮相，旁白开场白</td><td>全员、G</td></tr>
+<tr><td>00:55—01:20</td><td>P0 接单</td><td>助理递交发光清单卡，OLED 同步点亮</td><td>B、A</td></tr>
+<tr><td>01:20—02:05</td><td>P1 挂钩</td><td>车辆越线、驶入购物车区域、自动挂钩</td><td>A</td></tr>
+<tr><td>02:05—03:35</td><td>P2 取货</td><td>回购物区域，取货铲拾 3 件；牛奶缺货剧情、助理批准替代</td><td>A、B</td></tr>
+<tr><td>03:35—04:10</td><td>P3 结账</td><td>驶向结账区停靠</td><td>A</td></tr>
+<tr><td>04:10—06:00</td><td>P4 卸货</td><td>星臂卸 3 件，助理逐件唱名核对</td><td>C、B</td></tr>
+<tr><td>06:00—06:55</td><td>P5 穿越</td><td>结账后继续前进，右侧上行穿线、掉头下穿</td><td>A</td></tr>
+<tr><td>06:55—07:20</td><td>P6 释放回位</td><td>购物车过线释放，自行驶入停车区停下</td><td>系统</td></tr>
+<tr><td>07:20—07:40</td><td>P7 归位</td><td>车辆空载回到起始线后停稳</td><td>A</td></tr>
+<tr><td>07:40—08:00</td><td>谢幕</td><td>歌舞谢幕定格；预留安全余量</td><td>全员</td></tr>
+</table>
+<h2>12.2 应急预案</h2>
+<p>车辆偏航：手柄随时切手动修正，再切回自动继续。挂钩失败：车辆重试一次；仍失败则队员 C 在车辆静止时辅助挂钩（规则允许队员在车辆不行进时上下车）。星臂卡料：按 RESET 回取料位重试；单件允许人工补放（会损失部分 D6 分但不伤流程）。购物车停在区域外：规则允许时间内的多次尝试，车辆重新挂钩再释放一次。任一环节超时：跳过谢幕歌舞直接定格，保住技术分。</p>
+
+<h1 id="s13">十三、配音脚本</h1>
+<p>配音由队员 G 主录、B 补录对手戏，现场蓝牙音箱播放；关键指令同时由 B 现场口播，防止设备故障。</p>
+<table>
+<tr><th>时间码</th><th>角色</th><th>台词</th></tr>
+<tr><td>00:40</td><td>旁白</td><td>近未来，月球背面。人类的太空补给站今天开业——这里是 AstroMart Express！</td></tr>
+<tr><td>00:50</td><td>全员</td><td>（合唱）出发吧星驰号，货架在闪耀！</td></tr>
+<tr><td>00:58</td><td>小织</td><td>星舰长，指挥中心的第一份补给订单，请签收！（递交发光清单卡）</td></tr>
+<tr><td>01:05</td><td>星舰长</td><td>清单确认：月球牛奶、全麦面包、彩蛋六连盒。收到，出发！</td></tr>
+<tr><td>01:25</td><td>旁白</td><td>星驰一号驶入停车场，回巢号购物车自动挂接——咔哒，锁定！</td></tr>
+<tr><td>02:10</td><td>旁白</td><td>进入购物区域，目标：三件补给品。</td></tr>
+<tr><td>02:40</td><td>小织</td><td>注意！月球牛奶……缺货了！</td></tr>
+<tr><td>02:50</td><td>星舰长</td><td>请求替代方案！</td></tr>
+<tr><td>02:58</td><td>小织</td><td>（举"替代许可"牌）批准！用星尘豆奶替代，营养同源，宇宙同款！</td></tr>
+<tr><td>03:10</td><td>旁白</td><td>替代品已入篮，购物清单第一项——完成！</td></tr>
+<tr><td>03:40</td><td>旁白</td><td>全部三件补给采购完毕，驶向结账区。</td></tr>
+<tr><td>04:15</td><td>小织</td><td>星臂启动，逐件核单！第一件，星尘豆奶——替代品，已批准！</td></tr>
+<tr><td>04:45</td><td>小织</td><td>第二件，全麦面包——数量正确！</td></tr>
+<tr><td>05:15</td><td>小织</td><td>第三件，彩蛋六连盒——订单核对完成，全部无误！</td></tr>
+<tr><td>05:45</td><td>旁白</td><td>结账完成。星驰一号继续前进，穿越起始线平面——</td></tr>
+<tr><td>06:55</td><td>旁白</td><td>释放！回巢号，自己回家！</td></tr>
+<tr><td>07:10</td><td>旁白</td><td>稳稳停进购物车区域，补给任务圆满完成！</td></tr>
+<tr><td>07:40</td><td>全员</td><td>（合唱谢幕）太空补给站，随时为你出发！</td></tr>
+</table>
+
+<h1 id="s14">十四、细节、红线与风险预案</h1>
+<h2>14.1 细节清单（赛前逐项打勾）</h2>
+<p>车辆与全部附件在计时开始时完全位于起始线后；购物车在区域内且有接地点在区内。乘员脚部全程离地，脚踏板包覆防滑胶垫。全部电池为车载/设备自备，场内无任何拖线。星臂与结账台均为独立件，与车辆无机械连接。清单递交动作在越线前完成并排练到"裁判一定看清"的程度。释放触发双重保险：航点自动触发 + 手柄 B 键人工触发。备件包：电机、舵机、保险丝、电池各一，现场 5 分钟可换。</p>
+<h2>14.2 主要风险与对策</h2>
+<table>
+<tr><th>风险</th><th>概率</th><th>对策</th></tr>
+<tr><td>里程计累计漂移</td><td>中</td><td>每航点 0.07 米到达半径 + 手动接管；陀螺仪上电静置校准</td></tr>
+<tr><td>地面摩擦与彩排场地不一致</td><td>中</td><td>赛日 15 分钟布置期内实测一次回位距离并改参数</td></tr>
+<tr><td>购物车回位越界</td><td>低</td><td>行程可编程 1.2—2.2 米；规则允许时间内重试</td></tr>
+<tr><td>无线干扰</td><td>低</td><td>nRF24 信道 108，赛日可换 1—125</td></tr>
+<tr><td>队员紧张忘词</td><td>中</td><td>配音预录为主，现场口播为辅</td></tr>
+</table>
+
+<h1 id="s15">十五、提交材料清单</h1>
+<p>风格表 ×4（F1—F4 各一，F5 由裁判综合评定）；成本表 ×4（第十一章表格誊入官方格式）；外部援助表、解题明细表、队伍成员表与队伍名单；官方澄清打印件（清单递交时序、场地几何两条）；接线板转接器（如场地供电需要）、清洁工具。</p>
+
+</section>
+</body>
+</html>
