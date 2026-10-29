@@ -169,7 +169,10 @@ void setup() {
   pinMode(Pins::LIMIT_CLOSED, INPUT_PULLUP);
   pinMode(Pins::LIMIT_OPEN, INPUT_PULLUP);
 
-  analogWriteResolution(PWM_RESOLUTION_BITS);
+  analogWriteResolution(Pins::LEFT_RPWM, PWM_RESOLUTION_BITS);
+  analogWriteResolution(Pins::LEFT_LPWM, PWM_RESOLUTION_BITS);
+  analogWriteResolution(Pins::RIGHT_RPWM, PWM_RESOLUTION_BITS);
+  analogWriteResolution(Pins::RIGHT_LPWM, PWM_RESOLUTION_BITS);
   analogWriteFrequency(Pins::LEFT_RPWM, PWM_FREQUENCY_HZ);
   analogWriteFrequency(Pins::LEFT_LPWM, PWM_FREQUENCY_HZ);
   analogWriteFrequency(Pins::RIGHT_RPWM, PWM_FREQUENCY_HZ);
