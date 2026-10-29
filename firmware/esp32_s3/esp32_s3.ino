@@ -1,16 +1,15 @@
 /*
  * OMER service robot - ESP32-S3 N16R8 MVP firmware
  *
- * Target: Arduino-ESP32 core 3.x, ESP32Servo library.
- * This is a safe bring-up scaffold, NOT a completed autonomous navigation system.
+ * Target: Arduino-ESP32 core 3.x.
+ * This is a safe bring-up scaffold, NOT a completed autonomous navigation system. The vehicle firmware deliberately has no unloading actuator: the official 2026–2027 problem requires a detached, team-built unloading device that team members may operate directly by human power.
  * Physical emergency stop must interrupt motor-driver power independently of software.
  *
  * Serial commands at 115200 baud:
- *   help, status, arm, disarm, fwd, rev, left, right, stop, unload
+ *   help, status, arm, disarm, fwd, rev, left, right, stop
  * Motion commands are low-speed and time-limited. Wheels must be lifted during first tests.
  */
 #include <Arduino.h>
-#include <ESP32Servo.h>
 
 namespace Pins {
 constexpr uint8_t LEFT_RPWM = 4;
@@ -24,7 +23,6 @@ constexpr uint8_t SONAR_LEFT_TRIG = 10;
 constexpr uint8_t SONAR_LEFT_ECHO = 11;   // MUST be level-shifted to <= 3.3 V
 constexpr uint8_t SONAR_RIGHT_TRIG = 12;
 constexpr uint8_t SONAR_RIGHT_ECHO = 13;  // MUST be level-shifted to <= 3.3 V
-constexpr uint8_t DUMP_SERVO = 14;        // Servo has a separate 5-6 V supply; common GND
 constexpr uint8_t LIMIT_CLOSED = 17;
 constexpr uint8_t LIMIT_OPEN = 18;
 }
@@ -37,10 +35,6 @@ constexpr uint32_t MOTION_LIMIT_MS = 700; // Every manual motion pulse stops aut
 constexpr uint32_t COMMAND_WATCHDOG_MS = 1000;
 constexpr uint32_t SONAR_TIMEOUT_US = 18000;
 constexpr float OBSTACLE_STOP_CM = 20.0f;
-constexpr int SERVO_CLOSED_DEG = 20;
-constexpr int SERVO_OPEN_DEG = 95;
-
-Servo dumpServo;
 volatile uint32_t leftEncoderTicks = 0;
 volatile uint32_t rightEncoderTicks = 0;
 bool motorArmed = false;
@@ -128,7 +122,7 @@ void handleCommand(String command) {
   command.trim();
   command.toLowerCase();
   if (command == "help") {
-    Serial.println("Commands: help, status, arm, disarm, fwd, rev, left, right, stop, unload");
+    Serial.println("Commands: help, status, arm, disarm, fwd, rev, left, right, stop");
   } else if (command == "status") {
     printStatus();
   } else if (command == "arm") {
@@ -146,12 +140,6 @@ void handleCommand(String command) {
     startMotion(-MAX_TEST_PWM, MAX_TEST_PWM);
   } else if (command == "right") {
     startMotion(MAX_TEST_PWM, -MAX_TEST_PWM);
-  } else if (command == "unload") {
-    stopMotors();
-    dumpServo.write(SERVO_OPEN_DEG);
-    delay(500);
-    dumpServo.write(SERVO_CLOSED_DEG);
-    Serial.println("Unload servo cycle issued; verify limit switches and mechanism physically.");
   } else if (command.length() > 0) {
     Serial.println("Unknown command; type 'help'.");
   }
@@ -185,10 +173,6 @@ void setup() {
 
   attachInterrupt(digitalPinToInterrupt(Pins::LEFT_ENCODER_A), onLeftEncoder, RISING);
   attachInterrupt(digitalPinToInterrupt(Pins::RIGHT_ENCODER_A), onRightEncoder, RISING);
-
-  dumpServo.setPeriodHertz(50);
-  dumpServo.attach(Pins::DUMP_SERVO, 500, 2400);
-  dumpServo.write(SERVO_CLOSED_DEG);
 
   Serial.begin(SERIAL_BAUD);
   delay(300);
