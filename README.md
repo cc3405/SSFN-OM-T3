@@ -11,6 +11,7 @@
 0. **规则原文优先**：[D5 内 2026–2027 长期题 PDF](D5/1111111-main/2026-2027年度头脑奥林匹克长期题9.30.pdf)；设计冻结前须逐条核对 PDF，不以网页摘要替代。
 
 1. [整合方案与技术决策](docs/INTEGRATED_PLAN.md)
+1. [小组分工与交付标准（副组长负责程序编写）](docs/TEAM_ROLES.md)
 2. [14 天学期时间表（约 68 小时）](docs/14_DAY_DELIVERY.md)
 3. [具体型号采购清单（ESP32-S3 N16R8）](docs/COMPONENTS_BOM.md)
 4. [ESP32-S3 引脚分配与接线安全](docs/ESP32S3_PINMAP.md)
