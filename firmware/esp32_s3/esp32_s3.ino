@@ -17,6 +17,7 @@ constexpr uint8_t LEFT_RPWM = 4;
 constexpr uint8_t LEFT_LPWM = 5;
 constexpr uint8_t RIGHT_RPWM = 6;
 constexpr uint8_t RIGHT_LPWM = 7;
+constexpr uint8_t DRIVER_ENABLE = 21; // Shared R_EN/L_EN enable; use level shifting if required
 constexpr uint8_t LEFT_ENCODER_A = 15;
 constexpr uint8_t RIGHT_ENCODER_A = 16;
 constexpr uint8_t SONAR_LEFT_TRIG = 10;
@@ -68,6 +69,7 @@ void setMotorSide(uint8_t rpwmPin, uint8_t lpwmPin, int16_t signedPwm) {
 void stopMotors() {
   setMotorSide(Pins::LEFT_RPWM, Pins::LEFT_LPWM, 0);
   setMotorSide(Pins::RIGHT_RPWM, Pins::RIGHT_LPWM, 0);
+  digitalWrite(Pins::DRIVER_ENABLE, LOW); // Disable both drivers after PWM is zero
   motionActive = false;
 }
 
@@ -102,6 +104,8 @@ void startMotion(int16_t leftPwm, int16_t rightPwm) {
     Serial.println("BLOCKED: obstacle/unknown sonar reading. Check both sensors.");
     return;
   }
+  digitalWrite(Pins::DRIVER_ENABLE, HIGH); // EN is raised only for an armed motion pulse
+  delayMicroseconds(1000);
   setMotorSide(Pins::LEFT_RPWM, Pins::LEFT_LPWM, leftPwm);
   setMotorSide(Pins::RIGHT_RPWM, Pins::RIGHT_LPWM, rightPwm);
   motionStartedMs = millis();
@@ -156,7 +160,7 @@ void handleCommand(String command) {
 void setup() {
   const uint8_t outputs[] = {
     Pins::LEFT_RPWM, Pins::LEFT_LPWM, Pins::RIGHT_RPWM, Pins::RIGHT_LPWM,
-    Pins::SONAR_LEFT_TRIG, Pins::SONAR_RIGHT_TRIG
+    Pins::DRIVER_ENABLE, Pins::SONAR_LEFT_TRIG, Pins::SONAR_RIGHT_TRIG
   };
   for (uint8_t pin : outputs) {
     pinMode(pin, OUTPUT);
