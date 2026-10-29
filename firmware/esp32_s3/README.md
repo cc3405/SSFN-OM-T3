@@ -9,6 +9,10 @@
 
 官方 Arduino-ESP32 支持 ESP32-S3，参见 <https://docs.espressif.com/projects/arduino-esp32/en/latest/getting_started.html>。
 
+## 当前实现边界与已知限制
+
+这是人工串口 bring-up 草案，不是自动任务控制器。编码器目前仅统计 A 相上升沿，没有方向判定、速度闭环或基于里程的返航；`unload` 只发舵机开/关命令，不以限位开关确认完成。超声波无回波会阻止/停止运动，属于保守策略，但不能代替硬件急停。代码尚未在 Arduino-ESP32 实际工具链中编译，因此 API/版本兼容性仍需构建验证。
+
 ## 本固件当前做什么
 
 - 上电默认电机 disarmed，四路 PWM 和 GPIO21 共享驱动使能初始化为关闭状态；每次运动脉冲结束后先关 PWM 再拉低使能。
