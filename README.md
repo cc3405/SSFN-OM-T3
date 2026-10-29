@@ -12,6 +12,7 @@
 
 1. [整合方案与技术决策](docs/INTEGRATED_PLAN.md)
 1. [小组分工与交付标准（副组长负责程序编写）](docs/TEAM_ROLES.md)
+1. [车辆成品概念图（非加工工程图）](docs/PRODUCT_RENDER_CONCEPT.svg)
 2. [14 天学期时间表（约 68 小时）](docs/14_DAY_DELIVERY.md)
 3. [具体型号采购清单（ESP32-S3 N16R8）](docs/COMPONENTS_BOM.md)
 4. [ESP32-S3 引脚分配与接线安全](docs/ESP32S3_PINMAP.md)
@@ -20,6 +21,12 @@
 7. [风险与待确认事项](docs/RISKS.md)
 8. [三组 30 天计划](3组/OM计划.txt)
 9. [D5 旧版资料说明（归档）](D5/README.md)
+
+## 成品概念图预览
+
+![车辆主体、框架挡板、候选抓取机械臂与独立卸载装置的概念示意](docs/PRODUCT_RENDER_CONCEPT.svg)
+
+> 该图为方案沟通用概念示意，不代表已完成 CAD 或实物验证；请勿直接按图切割、钻孔或加工。
 
 ## 项目原则
 
