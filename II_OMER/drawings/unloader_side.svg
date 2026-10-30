@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720">
+<rect width="1100" height="720" fill="#fff"/>
+<text x="40" y="45" font-family="Arial,sans-serif" font-size="28" font-weight="bold">LUNA-3 · 独立三位翻转卸货台（侧视概念图）</text>
+<text x="40" y="76" font-family="Arial,sans-serif" font-size="16" fill="#555">人力手摇 / 自立底座 / 与车辆无连接 · 单位 mm · 非最终加工图</text>
+<!-- base -->
+<rect x="190" y="570" width="650" height="32" rx="5" fill="#536b7a"/>
+<path d="M260 570 L320 260 L350 260 L310 570 Z" fill="#dbe5ec" stroke="#344955" stroke-width="5"/>
+<path d="M740 570 L680 260 L650 260 L690 570 Z" fill="#dbe5ec" stroke="#344955" stroke-width="5"/>
+<!-- axle and tray -->
+<circle cx="500" cy="300" r="18" fill="#fff" stroke="#263b49" stroke-width="6"/>
+<path d="M500 300 L710 235 L735 310 L520 375 Z" fill="#e8eef3" stroke="#263b49" stroke-width="6"/>
+<line x1="530" y1="330" x2="690" y2="280" stroke="#263b49" stroke-width="3"/>
+<!-- compartments -->
+<path d="M560 282 L575 328 M615 265 L630 311 M670 248 L685 294" stroke="#607b8a" stroke-width="5"/>
+<rect x="565" y="230" width="38" height="38" rx="6" fill="#75a85b" stroke="#355c2a" stroke-width="2"/>
+<rect x="620" y="212" width="38" height="38" rx="6" fill="#4c9ec2" stroke="#24556b" stroke-width="2"/>
+<rect x="675" y="195" width="38" height="38" rx="6" fill="#d5b54a" stroke="#80651a" stroke-width="2"/>
+<!-- handle and gear -->
+<line x1="500" y1="300" x2="410" y2="405" stroke="#b66b22" stroke-width="10"/>
+<circle cx="395" cy="420" r="30" fill="#fff" stroke="#b66b22" stroke-width="7"/>
+<line x1="395" y1="420" x2="340" y2="420" stroke="#b66b22" stroke-width="8"/>
+<circle cx="335" cy="420" r="12" fill="#b66b22"/>
+<text x="80" y="400" font-size="18" font-family="Arial" fill="#9b5c11">手摇柄</text>
+<line x1="170" y1="405" x2="350" y2="420" stroke="#9b5c11" stroke-width="2"/>
+<text x="80" y="440" font-size="15" font-family="Arial">蜗杆/扇形齿轮减速</text>
+<!-- chute -->
+<path d="M735 310 L900 430 L890 455 L720 350" fill="#f5e8d5" stroke="#8a6942" stroke-width="5"/>
+<path d="M850 425 L960 425 L960 450 L870 450" fill="#d7e4eb" stroke="#536b7a" stroke-width="4"/>
+<text x="850" y="395" font-size="18" font-family="Arial">宽口导槽</text>
+<text x="855" y="480" font-size="15" font-family="Arial">结账区域</text>
+<!-- locks -->
+<rect x="470" y="335" width="24" height="55" fill="#bb4747"/>
+<text x="80" y="520" font-size="17" font-family="Arial" fill="#a22">机械止挡 + 二次锁销</text>
+<line x1="280" y1="510" x2="475" y2="365" stroke="#a22" stroke-width="2"/>
+<!-- dims -->
+<line x1="190" y1="635" x2="840" y2="635" stroke="#333" stroke-width="2"/>
+<text x="515" y="665" text-anchor="middle" font-size="18" font-family="Arial">底座宽度基线 700</text>
+<line x1="885" y1="260" x2="885" y2="570" stroke="#333" stroke-width="2"/>
+<text x="910" y="420" font-size="18" font-family="Arial">高度约 650</text>
+<text x="80" y="700" font-size="14" font-family="Arial" fill="#555">说明：翻转角度、导槽坡度、蜗杆减速比须用实际商品载荷做样机迭代；装置必须独立自立且不连接车辆。</text>
+</svg>
