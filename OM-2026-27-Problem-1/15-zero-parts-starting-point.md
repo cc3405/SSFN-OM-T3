@@ -1,40 +1,30 @@
-# Zero-Parts Starting Point — Procurement Decision
+# 15 · 从零零件起步的采购冻结决策（地点中立版）
 
-**Starting condition:** the team has no components or materials. **Hard cash cap: US$160 total, including tax and transport.**
+**起始条件：** 团队目前没有任何实体零件。团队内部总预算硬上限为 US$160，含所有应计入成本的费用。当前阶段用户明确选择先完成方案，实体采购暂缓。
 
-## Decision
+## 决策
 
-A safe, fully new, team-built rideable vehicle plus a towable shopping cart and independent unloading device is not a credible $160 shopping list. The existing $160 allocation in file 13 assumed access to donated, reclaimed, or already-owned structural parts. With zero parts, those assumptions are false.
+从零开始，用 US$160 买齐安全的原创载人车辆、购物车、连接机构、独立卸载装置和防护件，不能被视为已证明可行的采购计划。预算表中的低价分配依赖合格捐赠/回收/已有材料；若这些材料不存在，预算假设不成立。
 
-**Do not place a same-day order for loose wheels, steel tube, axles, bearings, or brakes.** Buying isolated components before a complete compatible design is established risks spending the entire budget without a safe working vehicle.
+**现在不采购。** 先完成规则澄清、设计审查、场地测量和安全可行性判断。
 
-## Same-day plan
+## 采购恢复前置条件
 
-1. Call Bike Works (3709 S Ferdinand St, Seattle; 206-725-8867) and ask whether a complete, correctly sized, refurbished adult bicycle or a donated/low-cost rolling chassis is available today. Ask whether a mechanic can inspect the frame, wheels, steering, and both brakes. Availability and price are not guaranteed.
-2. Call The Bikery (855 Hiawatha Pl S, Seattle; 425-224-6009) and ask about refurbished bicycles, donated parts, and whether any suitable complete donor platform is available. Its published shop hours are Saturday/Sunday 12–6; verify before traveling.
-3. Ask the coach, school, and team families for a complete donated adult bicycle, sturdy shopping cart, plywood, lumber offcuts, and hand tools. Do not ask for unverified loose load-bearing parts.
-4. Before spending, lay out a complete design and verify the problem's “original rideable vehicle” requirement. A stock bicycle or children's pedal go-kart must not be assumed to satisfy that requirement without checking the authoritative problem text and official clarifications.
-5. If a donor bicycle is permitted as a basis for the team's original vehicle, have a qualified bicycle mechanic inspect it and obtain a firm all-in quote. Reserve money for a safe cart, coupling, independent unloading device, guards, and tax.
-6. If the donor platform alone consumes the budget or the design cannot satisfy the originality requirement, stop purchases and request a coach/team budget or scope decision. Do not improvise a rider platform.
+- 教练确认车辆原创性设计符合题目要求。
+- 合格成人/专业人员审查载人结构、轮组、轮轴、转向、制动和人体工学。
+- 购物车释放/惯性回收概念取得必要的官方解释。
+- 购物车、独立卸载装置和所有防护件均有可执行设计。
+- 完整成本含税费和运输不超过 US$160。
+- 每件承载部件有可追溯规格或经专业人员检查。
 
-## Do not buy
+## 禁止事项
 
-- Children's pedal go-karts or ride-on toys as a substitute for a rider-rated vehicle. Their child sizing and toy load limits are not evidence of suitability for the team's operator.
-- Furniture casters, shopping-cart wheels, generic threaded rod, unknown salvage axles, or unverified bearings for a rider platform.
-- A brake kit until the wheel/hub/frame compatibility is known.
-- A dedicated inertia/lost-motion cart-return mechanism before official clarification. That return concept remains unapproved and untested.
+- 不购买互不兼容的散装轮子、轴、轴承、钢管和刹车后再临时拼装载人平台。
+- 不用家具脚轮、玩具车、儿童骑乘玩具、未知载荷部件或无检查的废料作为载人结构。
+- 不为购物车回收方案提前购买弹簧、电机或高能量储能机构。
+- 不通过削减制动、转向、车架强度、轴端锁止、防夹护罩来满足预算。
+- 不在没有成人监督和结构审查的情况下进行载人测试。
 
-## Budget reality
+## 项目状态
 
-The previous $160 line-item table is an allocation ceiling, not a retail bill of materials. Starting from zero, do not treat its $40 wheel allowance, $15 axle/bearing allowance, or $18 brake allowance as verified market prices. If safe, compatible load-bearing parts cannot be obtained through donation or a complete inspected donor platform, the build is not feasible within $160.
-
-## Release gate before purchase
-
-Proceed only when all are true:
-- A written design identifies the rider, frame load path, steering, braking, wheel/axle compatibility, and safe mounting.
-- The team and coach confirm the design is consistent with the authoritative problem statement.
-- The donor components have traceable specifications or have been inspected by a qualified mechanic.
-- A complete itemized budget, including cart, coupling, independent unloader, guards, tax, and transport, totals no more than $160.
-- The cart-return approach has the necessary official clarification.
-
-No component is claimed to have been purchased, built, or tested by this document.
+当前仅为纸面设计。没有零件已采购、没有车辆或购物车已组装、没有任何测试已完成。详细工程与预算基线见 [17-integrated-complete-plan.md](17-integrated-complete-plan.md)。
