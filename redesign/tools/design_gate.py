@@ -33,10 +33,10 @@ MAX_SCORE = {
     "cart_return_success": 10, "cart_return_creativity": 15,
 }
 SHOW_SEGMENTS_SECONDS = {
-    "setup": 25, "story_and_order": 30, "attach_and_start": 20,
-    "shopping": 70, "substitution": 40, "checkout_travel": 45,
-    "stop_and_position": 20, "unloading": 65, "assistant_check": 30,
-    "cart_return": 65, "ending": 30,
+    "setup": 25, "story_and_order": 25, "attach_and_start": 45,
+    "shopping": 60, "substitution": 35, "checkout_travel": 35,
+    "stop_and_position": 15, "unloading": 60, "assistant_check": 30,
+    "cart_return": 70, "ending": 40,
 }
 
 
