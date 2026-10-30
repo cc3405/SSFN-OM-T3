@@ -36,7 +36,7 @@ SHOW_SEGMENTS_SECONDS = {
     "setup": 25, "story_and_order": 25, "attach_and_start": 45,
     "shopping": 60, "substitution": 35, "checkout_travel": 35,
     "stop_and_position": 15, "unloading": 60, "assistant_check": 30,
-    "cart_return": 70, "ending": 40,
+    "return_to_start_and_release": 70, "cart_return_and_finish": 40,
 }
 
 
