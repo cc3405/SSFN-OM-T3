@@ -24,6 +24,12 @@
 - [07 风险、规则澄清与决策门](07_RISKS_CLARIFICATIONS.md)
 - [08 提交材料草案](08_SUBMISSION_FORMS.md)
 
+## 工程深化与采购
+
+- [09 手摇传动参数计算](09_DRIVETRAIN_CALCULATIONS.md)
+- [10 结构载荷路径与安全审查](10_STRUCTURAL_SAFETY.md)
+- [11 今日采购单（待确认下单方式）](11_TODAY_PROCUREMENT.md)
+
 ## 重要边界
 
 - 题面规定 8 分钟、165 美元、总分 250（解题 200 + 风格 50）。最终成本必须按 2026–27 活动手册定义核算；本目录价格只是采购预算假设。
