@@ -11,6 +11,7 @@
 - [17 · 整合版完整竞赛方案](17-integrated-complete-plan.md) — 当前唯一整合执行基线。
 - [18 · 载人车辆工程布置概念图](18-vehicle-engineering-drawing-concept.md) — 三轮蝌蚪式布局、D-01 至 D-04、尺寸基准和 NO-RIDE 安全门。
 - [19 · 车辆子系统接口与验证记录](19-vehicle-subsystems-and-interface-control.md) — 接口责任、额定资料、验证放行和配置变更记录。
+- [20 · 明日提交前完整自主审查](20-pre-submission-audit.md) — 条款追踪、已修复问题、未关闭风险和明日提交清单。
 - [13 · US$160 计划支出 + US$5 预留](13-rebalanced-160-dollar-budget.md) — 预算口径与现实可行性。
 - [09 · 自主设计复核](09-self-review.md) — 未关闭风险与设计冻结条件。
 - [08 · 队伍要求清单](08-team-submission.md) — 四份清单草稿。
