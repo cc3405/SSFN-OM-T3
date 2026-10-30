@@ -52,3 +52,18 @@
 ## 许可
 
 新编写的项目文档与代码按 **CC BY-NC 4.0** 声明许可，范围及第三方材料限制见 [LICENSE](LICENSE)。第三方赛题文件、官方图表和既有材料不因该声明自动获得再许可。
+
+
+## 全新 Group II 竞赛工程包
+
+本目录为独立设计基线（II 组、7 人），不沿用历史项目规划和旧方案：
+
+- [OMER Group II 全新工程包](II_OMER/README.md)
+- [需求追踪与评分策略](II_OMER/01_REQUIREMENTS_SCORE.md)
+- [总体方案与尺寸基线](II_OMER/02_SYSTEM_DESIGN.md)
+- [机械加工与装配说明](II_OMER/03_BUILD_DRAWINGS.md)
+- [采购清单与预算](II_OMER/04_BOM_BUDGET.md)
+- [七人表演与舞台调度](II_OMER/05_SHOW_RUNBOOK.md)
+- [测试计划与验收记录](II_OMER/06_TEST_PLAN.md)
+- [风险与官方澄清](II_OMER/07_RISKS_CLARIFICATIONS.md)
+- [参赛提交材料草案](II_OMER/08_SUBMISSION_FORMS.md)
