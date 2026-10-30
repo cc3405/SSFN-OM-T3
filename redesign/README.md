@@ -24,6 +24,7 @@
 - [05 规则映射与评分策略](05_SCORE_RULES.md)
 - [06 七人分工与验证计划](06_TEAM_TESTING.md)
 - [07 风险登记表](07_RISK_REGISTER.md)
+- [08 比赛提交材料草案](08_SUBMISSION_FORMS.md)
 - [设计门禁脚本](tools/design_gate.py) 与 [单元测试](tests/test_design_gate.py)
 
 ## 重要的规则边界
