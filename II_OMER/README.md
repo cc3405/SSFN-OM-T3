@@ -1,5 +1,7 @@
 # Group II · OMER Shopping Service — 全新竞赛工程包
 
+> 2026-10-30 轴系变更：车辆驱动后轴统一为 1/2 in（12.700 mm）；卸货台翻转轴仍独立为 12 mm。
+
 > 设计基线：2026–2027 Problem 1《OMER 的购物服务》题面 1.md；组别 II；7 名队员。本文档集独立于仓库历史方案，旧项目规划、旧代码和旧机械方案均不构成本方案约束。
 
 ## 方案总览
@@ -26,9 +28,9 @@
 
 ## 工程深化与采购
 
-- [09 手摇传动参数计算](09_DRIVETRAIN_CALCULATIONS.md)
+- [09 手摇传动参数计算（1/2 in 驱动后轴）](09_DRIVETRAIN_CALCULATIONS.md)
 - [10 结构载荷路径与安全审查](10_STRUCTURAL_SAFETY.md)
-- [11 今日采购单（待确认下单方式）](11_TODAY_PROCUREMENT.md)
+- [11 线上采购清单（1/2 in 轴系修订版）](11_TODAY_PROCUREMENT.md)
 
 ## 重要边界
 
