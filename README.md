@@ -14,7 +14,8 @@
 6. [规则映射与评分策略](redesign/05_SCORE_RULES.md) — 题目条款、评分矩阵和官方澄清草案。
 7. [七人分工与验证](redesign/06_TEAM_TESTING.md) — 岗位、测试矩阵和发布门槛。
 8. [风险登记](redesign/07_RISK_REGISTER.md) — 合规、机械、时间和预算风险。
-9. [设计门禁脚本](redesign/tools/design_gate.py) 与 [单元测试](redesign/tests/test_design_gate.py)。
+9. [比赛提交材料草案](redesign/08_SUBMISSION_FORMS.md) — B12解题明细表、风格表、成本表与外部援助自查。
+10. [设计门禁脚本](redesign/tools/design_gate.py) 与 [单元测试](redesign/tests/test_design_gate.py)。
 
 ## 核心方案摘要
 
